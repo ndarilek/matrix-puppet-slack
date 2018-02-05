@@ -1,12 +1,13 @@
 const path = require('path');
-const config = require('./config.json');
+const configPath = process.cwd() + '/config.json';
+const config = require(configPath);
 const {
   MatrixAppServiceBridge: {
     Bridge, Cli, AppServiceRegistration
   },
   Puppet,
 } = require("matrix-puppet-bridge");
-const puppet = new Puppet('./config.json');
+const puppet = new Puppet(configPath);
 const debug = require('debug')('matrix-puppet:slack');
 const Promise = require('bluebird');
 const slackdown = require('./slackdown');
